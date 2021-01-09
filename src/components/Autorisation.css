@@ -12,6 +12,12 @@
   background: #FFF68F;
 }
 
+@media screen and (max-width: 450px) {
+  .form {
+    width: 300px;
+  }
+}
+
 .form__title {
   margin: 20px auto;
   text-align: center;

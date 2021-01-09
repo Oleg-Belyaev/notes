@@ -5,7 +5,7 @@
 }
 
 .header__button {
-  background-color: #99ff66;
+  background-color: #24da1e;
   border: 0;
   border-radius: 50%;
   width: 50px;
@@ -15,13 +15,16 @@
   cursor: pointer;
   transition: opacity .5s linear;
   visibility: hidden;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .header__button_active {
   visibility: visible;
 }
 
-.header__button::after {
+/* .header__button::after {
   content: '';
   position: absolute;
   height: 40px;
@@ -37,7 +40,7 @@
   border-top: 3px solid #ffffff;
   top: 43px;
   right: 25px;
-}
+} */
 
 .header__button:hover {
   opacity: 0.5;
