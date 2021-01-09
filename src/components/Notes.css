@@ -1,0 +1,9 @@
+.notes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main__notes {
+  margin-top: 20px;
+}

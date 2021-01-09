@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-image: linear-gradient(to right, yellow, red);
+}
+
+.header__button {
+  background-color: #99ff66;
+  border: 0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 20px 20px 20px 0;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity .5s linear;
+  visibility: hidden;
+}
+
+.header__button_active {
+  visibility: visible;
+}
+
+.header__button::after {
+  content: '';
+  position: absolute;
+  height: 40px;
+  border-left: 3px solid #ffffff;
+  top: 25px;
+  right: 43px;
+}
+
+.header__button::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  border-top: 3px solid #ffffff;
+  top: 43px;
+  right: 25px;
+}
+
+.header__button:hover {
+  opacity: 0.5;
+}
+
+.header__title {
+  margin: 20px 0 20px 10px;
+}

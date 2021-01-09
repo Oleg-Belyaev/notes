@@ -1,0 +1,30 @@
+.note {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0 0 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note__delete {
+  width: 80px;
+  background-color: red;
+  border-radius: 5px;
+  border: 0;
+  font-size: 15px;
+  line-height: 1.2;
+  text-align: center;
+  color: white;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: opacity .5s linear;
+}
+
+.note__delete:hover {
+  opacity: 0.5;
+}
+
+.note__data {
+  font-style: italic;
+}
