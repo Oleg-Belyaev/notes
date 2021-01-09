@@ -109,10 +109,10 @@ function App() {
     <div className="App">
       <Header onAddNotes={handleAddNotesClick} token={token}/>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/notes">
           <Autorisation onAuth={handleAuth}/>
         </Route>
-        <Route exact path="/notes">
+        <Route exact path="/mainPage">
           <Notes notes={notes} onNoteDelete={handleNoteDelete} token={token}/>
           <Popup isOpen={isPopupOpen} onClose={closePopup} onAddNotes={handleAddNotesSubmit} token={token}/>
         </Route>

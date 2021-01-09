@@ -68,7 +68,7 @@ function Autorisation(props) {
             value={password} onChange={handlePasswordChange} required/>
           </div>
           <button type="submit" className={`form__submit ${activeButton && 'form__submit_inactive'}`} value="Создать">Создать</button>
-          <Link type="button" className={`form__button ${!activeButton && 'form__button_inactive'}`} value="Войти" to="/notes"> Войти </Link>
+          <Link type="button" className={`form__button ${!activeButton && 'form__button_inactive'}`} value="Войти" to="/mainPage"> Войти </Link>
         </fieldset>
       </form>
     </main>
