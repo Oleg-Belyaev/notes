@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Проект "Мои заметки"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Проект доступен по ссылке: https://oleg-belyaev.github.io/notes
+Также проект можно скопировать на свой компьютер, доступные команды описаны ниже.
 
 ## Available Scripts
 
