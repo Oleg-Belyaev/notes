@@ -83,7 +83,7 @@ function App() {
         <Route exact path="/notes">
           <Autorisation onAuth={handleAuth}/>
         </Route>
-        <Route exact path="/mainPage">
+        <Route exact path="/notes/mainPage">
           <Notes notes={notes} onNoteDelete={handleNoteDelete} token={token}/>
           <Popup isOpen={isPopupOpen} onClose={closePopup} onAddNotes={handleAddNotesSubmit} token={token}/>
         </Route>
