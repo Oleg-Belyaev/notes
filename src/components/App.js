@@ -8,10 +8,9 @@ import api from '../utils/Api';
 import './App.css';
 
 function App() {
-
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
   const [notes, setNotes] = React.useState([]);
-  const [token, setToken] = React.useState(''); 
+  const [token, setToken] = React.useState(localStorage.getItem('token') || ''); 
   
   function handleAddNotesClick() {
     setIsPopupOpen(true);
@@ -28,14 +27,6 @@ function App() {
   
   function handleAuth (token) {
     setToken(token);
-    api.getNotes(token)
-    .then((res) => {
-      if (res !== null) {
-        renderNotes(res);
-      } else {
-        setNotes([]);
-      }
-    })
   }
 
   function handleAddNotesSubmit(newNotesData) {
@@ -70,6 +61,20 @@ function App() {
       console.log(err);
     });
   }
+
+  React.useEffect(() => {
+    const id = localStorage.getItem('token');
+    if (id) {
+      api.getNotes(token)
+      .then((res) => {
+        if (res !== null) {
+          renderNotes(res);
+        } else {
+          setNotes([]);
+        }
+      })
+    }
+  }, [token]);
 
   return (
     <div className="App">

@@ -40,7 +40,11 @@ function Autorisation(props) {
     e.preventDefault();
     auth(email, password)
     .then(token => {
-      props.onAuth(token);
+      localStorage.setItem('token', token);
+      return token;
+    })
+    .then(() => {
+      props.onAuth(localStorage.getItem('token'));
       setEmail('');
       setPassword('');
       setActiveButton(true);
