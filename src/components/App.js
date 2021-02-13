@@ -1,16 +1,18 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import Autorisation from './Autorisation';
 import Header from './Header';
 import Notes from './Notes';
 import Popup from './Popup';
 import api from '../utils/Api';
+import ProtectedRoute from './ProtectedRout';
 import './App.css';
 
 function App() {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
   const [notes, setNotes] = React.useState([]);
   const [token, setToken] = React.useState(localStorage.getItem('token') || ''); 
+  const history = useHistory();
   
   function handleAddNotesClick() {
     setIsPopupOpen(true);
@@ -27,6 +29,7 @@ function App() {
   
   function handleAuth (token) {
     setToken(token);
+    history.push('/notes')
   }
 
   function handleAddNotesSubmit(newNotesData) {
@@ -62,6 +65,12 @@ function App() {
     });
   }
 
+  function signOut () {
+    localStorage.removeItem('token');
+    setToken('')
+    history.push('/notes/login');
+  }
+
   React.useEffect(() => {
     const id = localStorage.getItem('token');
     if (id) {
@@ -78,14 +87,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header onAddNotes={handleAddNotesClick} token={token}/>
+      <Header onAddNotes={handleAddNotesClick} token={token} onSignOut={signOut}/>
+      <Popup isOpen={isPopupOpen} onClose={closePopup} onAddNotes={handleAddNotesSubmit} token={token}/>
       <Switch>
-        <Route exact path="/notes">
+        <Route path="/notes/login">
           <Autorisation onAuth={handleAuth}/>
         </Route>
-        <Route exact path="/mainPage">
-          <Notes notes={notes} onNoteDelete={handleNoteDelete} token={token}/>
-          <Popup isOpen={isPopupOpen} onClose={closePopup} onAddNotes={handleAddNotesSubmit} token={token}/>
+        <ProtectedRoute path="/notes" component={Notes} token={token} notes={notes} onNoteDelete={handleNoteDelete} />
+        <Route path="/notes">
+          {token ? <Redirect to="/notes" /> : <Redirect to="/notes/login" />}
         </Route>
       </Switch>
     </div>
